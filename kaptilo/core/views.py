@@ -1,6 +1,4 @@
-from django.contrib import auth
-from django.shortcuts import render, redirect
-
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -13,3 +11,12 @@ def logout(request):
     auth.logout(request)
     return redirect('homepage')
 
+
+
+def create_link(request):
+    content = {}
+    if request.method == 'POST':
+        pass
+    else:
+        content = {'form': LinkForm()}
+    return render(request, 'create_link.html', content)
