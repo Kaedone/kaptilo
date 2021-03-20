@@ -116,6 +116,14 @@ argon2 = ["argon2-cffi (>=16.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-admin-honeypot"
+version = "1.1.0"
+description = "A fake Django admin login screen to notify admins of attempted unauthorized access."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "django-dynamic-fixture"
 version = "3.1.1"
 description = "A full library to create dynamic model instances for testing purposes."
@@ -301,7 +309,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "d4eac3dfaad60bc362715b289137381f50fc2517f8dce4db62179e29554eccbd"
+content-hash = "9b8bd709ab6a7ce9f29bc8f020e9a101695943c2e213ec8ded24752ba718be9a"
 
 [metadata.files]
 appdirs = [
@@ -343,6 +351,10 @@ dj-database-url = [
 django = [
     {file = "Django-3.1.7-py3-none-any.whl", hash = "sha256:baf099db36ad31f970775d0be5587cc58a6256a6771a44eb795b554d45f211b8"},
     {file = "Django-3.1.7.tar.gz", hash = "sha256:32ce792ee9b6a0cbbec340123e229ac9f765dff8c2a4ae9247a14b2ba3a365a7"},
+]
+django-admin-honeypot = [
+    {file = "django-admin-honeypot-1.1.0.tar.gz", hash = "sha256:e18a52832b82740917737873c6f34117d15631565e9e4b7dbb9df48a29250796"},
+    {file = "django_admin_honeypot-1.1.0-py2.py3-none-any.whl", hash = "sha256:88e72753f5cbda88d909292d9f3fe7741fb74a8afad083f96e86114238f9b364"},
 ]
 django-dynamic-fixture = [
     {file = "django-dynamic-fixture-3.1.1.tar.gz", hash = "sha256:90d9d68ec373dce97a4a9ba3ec6a39cf10918e9c222fdf231074cfb668d14ea2"},
