@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-info" role="alert">
-                {{ message }}
+                <div class="container">
+                    {{ message }}
+                </div>
             </div>
         {% endfor %}
     {% endif %}
+
     <div class="container my-5">
         <div>
             <h1 class="display-1"><b>Kaptilo - </b><span class="text-muted">a lightweight tool for tracking people who have access to your chats</span>

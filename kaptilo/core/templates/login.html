@@ -3,6 +3,16 @@
 
 {% block content %}
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info" role="alert">
+                <div class="container">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col col-md-6">

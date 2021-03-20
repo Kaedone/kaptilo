@@ -12,22 +12,50 @@
             <div class="text-center">{{ url }}</div>
         </div>
     {% else %}
-    <div class="container">
-        <h2 class="display-4">Write your link</h2>
-        <form method="post" class="my-5">
-            {% csrf_token %}
-            <div class="mb-3">
-                {% with field=form.link %}
-                    {% include 'field.html' %}
-                {% endwith %}
-                {% with field=form.is_delete %}
-                    {% include 'field.html' %}
-                {% endwith %}
-            </div>
-        <button type="submit" class="btn btn-primary mb-3">Create</button>
-        <a class="btn btn-secondary" href="{% url 'homepage' %} " role="button">Close</a>
-        </form>
-    </div>
+        <div class="container my-5">
+            <h1>Link creation</h1>
+            <form method="post" class="my-4">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {% with field=form.link %}
+                        {% include 'field.html' %}
+                    {% endwith %}
+                    <small><a href="#" id="random-generate">Generate the link randomly</a></small>
+                </div>
+                <div class="form-check mb-3">
+                    {% with field=form.permanent %}
+                        {% include 'field.html' %}
+                    {% endwith %}
+                </div>
+                <button type="submit" class="btn btn-outline-dark">Create</button>
+            </form>
+        </div>
     {% endif %}
 
+
+    <script>
+        async function getLinkById(id) {
+            let requestLinkURL = `https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=info&pageids=` + id + `&inprop=url`;
+            let response = await fetch(requestLinkURL);
+            if (response.ok) {
+                let r = await response.json();
+                let pages = r.query.pages;
+                let link = pages[Object.keys(pages)[0]].canonicalurl;
+                document.getElementById("id_link").setAttribute("value", link);
+            }
+        }
+
+        document.getElementById("random-generate").addEventListener("click", async function (e) {
+            const requestURL = `https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&generator=random&grnnamespace=0&prop=revisions|images&rvprop=content`;
+            let response = await fetch(requestURL);
+            if (response.ok) {
+                let r = await response.json();
+                let pages = r.query.pages;
+                let pageId = pages[Object.keys(pages)[0]].pageid;
+                await getLinkById(pageId);
+            }
+        })
+    </script>
+
 {% endblock %}
+

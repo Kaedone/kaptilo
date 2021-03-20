@@ -1,12 +1,23 @@
 from django import forms
-from . import models
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from . import models
 
-class LinkForm(forms.Form):
-    link = forms.CharField(label="Source link", required=True)
-    is_delete = forms.BooleanField(label='Delete after reading', required=False)
+
+class LinkForm(forms.ModelForm):
+    class Meta:
+        model = models.Link
+        fields = ['permanent', 'link']
+        help_texts = {
+            "permanent": "If selected, the link won't be deleted after the first use",
+            "link": "People will be redirected to this address after following the link"
+        }
+        widgets = {
+            "link": forms.TextInput(attrs={
+                "placeholder": "https://..."
+            })
+        }
 
 
 class RegisterForm(UserCreationForm):
