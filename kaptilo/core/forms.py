@@ -4,10 +4,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-class LinkForm(forms.ModelForm):
-    class Meta:
-        model = models.Link
-        fields = ['user', 'text', 'delete_after_watching']
+class LinkForm(forms.Form):
+    text = forms.CharField(label="Text in note", widget=forms.Textarea)
+    # url = forms.SlugField(label="Link name")
+    is_delete = forms.BooleanField(label='Delete after reading', required=False)
 
 
 class RegisterForm(UserCreationForm):

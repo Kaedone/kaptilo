@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 
 
-{% block content%}
-pass
+{% block content %}
+    {% if is_alert %}
+        <div class="alert alert-primary" role="alert">
+            Error with creating!
+        </div>
+    {% endif %}
+    <div class="container">
+        <h2 class="display-4">Write your note</h2>
+        <form method="post" class="my-5">
+            {% csrf_token %}
+            <div class="mb-3">
+                {% with field=form.text %}
+                    {% include 'field.html' %}
+                {% endwith %}
+                {% with field=form.is_delete %}
+                    {% include 'field.html' %}
+                {% endwith %}
+            </div>
+        <button type="submit" class="btn btn-primary mb-3">Create</button>
+        <a class="btn btn-secondary" href="{% url 'homepage' %} " role="button">Close</a>
+        </form>
+    </div>
+
 {% endblock %}
