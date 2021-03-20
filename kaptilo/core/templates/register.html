@@ -23,12 +23,22 @@
                                 {% endwith %}
                             </div>
                             <div class="mb-3">
-                                {% with field=form.password %}
+                                {% with field=form.email %}
+                                    {% include 'field.html' %}
+                                {% endwith %}
+                            </div>
+                            <div class="mb-3">
+                                {% with field=form.password1 %}
+                                    {% include 'field.html' %}
+                                {% endwith %}
+                            </div>
+                            <div class="mb-3">
+                                {% with field=form.password2 %}
                                     {% include 'field.html' %}
                                 {% endwith %}
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-outline-dark">Login</button>
+                                <button type="submit" class="btn btn-outline-dark">Sign up</button>
                             </div>
                         </form>
                     </div>
@@ -40,3 +50,4 @@
     </div>
 
 {% endblock %}
+

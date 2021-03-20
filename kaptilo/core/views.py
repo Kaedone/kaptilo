@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib import auth
+from django.contrib import auth, messages
 from core import forms
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from . import models
 from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 
 
 def homepage(request):
@@ -38,14 +39,38 @@ def create_link(request):
         content = {'form': forms.LinkForm()}
     return render(request, 'create_link.html', content)
 
-def show_link(request, ):
-    ...
+
+def show_link(request, id):
+    m = models.Link.objects.get(pk=id)
+    return render(request, 'show_link.html', {'data': m})
 
 
 def login(request):
-    form = forms.LoginForm()
+    form = AuthenticationForm()
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = auth.authenticate(request, username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('homepage')
     context = {
         "form": form
     }
     return render(request, 'login.html', context)
 
+
+def register(request):
+    form = forms.RegisterForm()
+    if request.method == "POST":
+        form = forms.RegisterForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Registration completed successfully!")
+            return redirect('login')
+    context = {
+        'form': form
+    }
+    return render(request, 'register.html', context)
