@@ -20,22 +20,23 @@ def logout(request):
 @login_required
 @transaction.atomic
 def create_link(request):
-    f = forms.LinkForm()
+    form = forms.LinkForm()
     if request.method == 'POST':
-        f = forms.LinkForm(request.POST)
-        if f.is_valid():
-            link = f.save(commit=False)
+        form = forms.LinkForm(request.POST)
+        if form.is_valid():
+            link = form.save(commit=False)
             link.user = request.user
+            link.get_shortened_link(request)
             link.save()
-            messages.success(request, "Note created successfully!")
+            messages.success(request, "Link was created successfully!")
             return redirect('homepage')
-    context = {'form': f}
+    context = {'form': form}
     return render(request, 'create_link.html', context)
 
 
-def show_link(request, id):
-    m = models.Link.objects.get(pk=id)
-    return render(request, 'show_link.html', {'data': m})
+def follow_link(request, pk: int):
+    m = models.Link.objects.get(pk=pk)
+    return redirect(m.link)
 
 
 def login(request):
@@ -67,3 +68,11 @@ def register(request):
         'form': form
     }
     return render(request, 'register.html', context)
+
+
+def profile(request):
+    links = models.Link.objects.filter(user=request.user)
+    context = {
+        "links": links
+    }
+    return render(request, "profile.html", context)
