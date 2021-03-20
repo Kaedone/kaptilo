@@ -1,17 +1,36 @@
-import configparser
 import os
+
+import dj_database_url
+import environ
+
+root = environ.Path(__file__, "../..")
+
+os.sys.path.insert(0, root())
+os.sys.path.insert(0, os.path.join(root(), "apps"))
+
+env = environ.Env(
+    DEBUG=(bool, False),
+    SECRET_KEY=(str, "oiph!k9a+8p_&vpev0*sch^en7#ip&5v6gybt%=(8b+$-qbzs&"),
+    ALLOWED_HOSTS=(list, ["*"]),
+    DB_DSN=(str, "sqlite:///db.sqlite3"),
+    BASE_URL=(str, "http://localhost:8000"),
+    API_KEY=(str, None),
+    ROLE=(str, "prod"),
+)
+
+ini_file_path = root("env.ini")
+if os.path.exists(ini_file_path):
+    env.read_env(ini_file_path)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-parser = configparser.ConfigParser()
-parser.read(os.path.join(BASE_DIR, "kaptilo/settings.ini"))
-API_KEY = parser["MAIN"].get("API_KEY")
+ROLE = env("ROLE")
 
-SECRET_KEY = parser["MAIN"]["SECRET_KEY"]
+API_KEY = env("API_KEY")
 
-DEBUG = True
-
-ALLOWED_HOSTS = []
+SECRET_KEY = env("SECRET_KEY")
+DEBUG = env("DEBUG")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -54,12 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kaptilo.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = {"default": dj_database_url.config(default=env("DB_DSN"))}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -84,7 +98,27 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 
-STATIC_URL = '/static/'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = root("media")
+
+STATIC_URL = "/static/"
+STATIC_ROOT = root("static")
+STATICFILES_DIRS = [root("project/static")]
+
+BASE_URL = env("BASE_URL")
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+if ROLE == "test":
+
+    class DisableMigrations(object):
+        def __contains__(self, item):
+            return True
+
+        def __getitem__(self, item):
+            return None
+
+    MIGRATION_MODULES = DisableMigrations()
 
 
 class MultipleProxyMiddleware:
