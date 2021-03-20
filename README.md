@@ -9,4 +9,3 @@ poetry install
 ``` 
 - apply DB migrations `./manage.py migrate`
 - run localserver `./manage.py runserver`
-
