@@ -8,3 +8,7 @@ handler = ipinfo.getHandler(access_token)
 def get_ip(ip_address):
     details = handler.getDetails(ip_address)
     return details
+
+
+def decript_results(details):
+    return details.city
