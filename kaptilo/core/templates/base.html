@@ -25,9 +25,9 @@
             </div>
             <form class="d-flex">
                 {% if not user.is_authenticated %}
-                    <a class="btn btn-outline-success" href="#" type="submit">Sign in</a>
+                    <a class="btn btn-outline-light" href="#" type="submit">Sign in</a>
                 {% else %}
-                    <div class="navbar-text">{{ user.username }}<a href="/logout" class="ms-2">> Logout</a></div>
+                    <div class="navbar-text">{{ user.username }}<a href="{% url 'logout' %} } class="ms-2">> Logout</a></div>
                 {% endif %}
             </form>
         </div>
