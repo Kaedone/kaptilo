@@ -19,10 +19,15 @@ class Link(models.Model):
         verbose_name_plural = 'Links'
 
     def get_shortened_link(self, request):
-        url = request.get_host() + "/" + str(self.pk)
+        url = "http://" + request.get_host() + "/" + str(self.pk)
         url = urllib.parse.quote(url)
         r = requests.get('http://cutt.ly/api/api.php?key={}&short={}'.format(settings.API_KEY, url))
-        print(r)
+        data = r.json()
+        if data['url']['status'] == 7:
+            self.shortened = data['url']['shortLink']
+            self.save()
+            return True
+        return False
 
     def __str__(self):
         return "{} {}".format(self.user, self.pk)
