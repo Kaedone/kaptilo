@@ -1,11 +1,16 @@
 from django.shortcuts import render
-from .forms import *
 
 # Create your views here.
 
 
 def homepage(request):
     return render(request, 'homepage.html', {})
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('homepage')
+
 
 
 def create_link(request):
