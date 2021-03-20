@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+  back:
+    build: .
+    restart: always
+    links:
+      - pg:pg
+    depends_on:
+      - pg
+    ports:
+      - 8000:8000
+    environment:
+      - DB_DSN=postgres://user:pass@pg/main
+      - API_KEY=${API_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${DOMAIN}
+      - BASE_URL=https://${DOMAIN}
+
+  pg:
+    image: postgres:12
+    restart: always
+    volumes:
+      - ./data/pg:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=main
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass

@@ -5,6 +5,8 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
+__all__ = ["Link"]
+
 
 class Link(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -14,6 +16,7 @@ class Link(models.Model):
     created = models.DateTimeField("Creation date", auto_now_add=True)
 
     class Meta:
+        app_label = "core"
         verbose_name = 'Link'
         verbose_name_plural = 'Links'
 

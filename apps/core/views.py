@@ -4,12 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.db import transaction
 from django.shortcuts import render, redirect
 
-from core import forms
-from . import models
-
-
-def homepage(request):
-    return render(request, 'homepage.html', {})
+from apps.core import forms
+from apps.core import models
 
 
 def logout(request):

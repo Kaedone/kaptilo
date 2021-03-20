@@ -5,6 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
+.idea
 
 # Distribution / packaging
 .Python
@@ -54,6 +55,10 @@ coverage.xml
 # Translations
 *.mo
 *.pot
+
+.env
+db.sqlite3
+data/
 
 # Django stuff:
 *.log
