@@ -1,6 +1,7 @@
 from django import forms
 from . import models
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 class LinkForm(forms.ModelForm):
@@ -9,5 +10,10 @@ class LinkForm(forms.ModelForm):
         fields = ['user', 'text', 'delete_after_watching']
 
 
-class LoginForm(AuthenticationForm):
-    ...
+class RegisterForm(UserCreationForm):
+    class Meta:
+        help_texts = {
+            'email': "Specify your email to receive notifications"
+        }
+        model = User
+        fields = ['username', 'password1', 'password2', 'email']

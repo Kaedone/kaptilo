@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib import auth
+from django.contrib import auth, messages
 # Create your views here.
 from core import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 
 def homepage(request):
@@ -23,9 +24,9 @@ def create_link(request):
 
 
 def login(request):
-    form = forms.LoginForm()
+    form = AuthenticationForm()
     if request.method == "POST":
-        form = forms.LoginForm(data=request.POST)
+        form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -38,3 +39,16 @@ def login(request):
     }
     return render(request, 'login.html', context)
 
+
+def register(request):
+    form = forms.RegisterForm()
+    if request.method == "POST":
+        form = forms.RegisterForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Registration completed successfully!")
+            return redirect('login')
+    context = {
+        'form': form
+    }
+    return render(request, 'register.html', context)
