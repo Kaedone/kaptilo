@@ -24,6 +24,15 @@ def create_link(request):
 
 def login(request):
     form = forms.LoginForm()
+    if request.method == "POST":
+        form = forms.LoginForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = auth.authenticate(request, username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('homepage')
     context = {
         "form": form
     }
