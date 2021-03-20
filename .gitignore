@@ -56,7 +56,7 @@ coverage.xml
 *.mo
 *.pot
 
-env.ini
+.env
 
 # Django stuff:
 *.log

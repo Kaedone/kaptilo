@@ -18,7 +18,7 @@ env = environ.Env(
     ROLE=(str, "prod"),
 )
 
-ini_file_path = root("env.ini")
+ini_file_path = root(".env")
 if os.path.exists(ini_file_path):
     env.read_env(ini_file_path)
 
