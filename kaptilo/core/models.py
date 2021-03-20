@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 class Link(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField(verbose_name="text")
+    link = models.CharField(verbose_name="link", max_length=1024)
     delete_after_watching = models.BooleanField(verbose_name="delete")
-    header = models.CharField(max_length=256, verbose_name='header', default='UNNAMED')
+
 
     class Meta:
         verbose_name = 'Link'

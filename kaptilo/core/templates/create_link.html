@@ -8,14 +8,11 @@
         </div>
     {% endif %}
     <div class="container">
-        <h2 class="display-4">Write your note</h2>
+        <h2 class="display-4">Write your link</h2>
         <form method="post" class="my-5">
             {% csrf_token %}
             <div class="mb-3">
-                {% with field=form.header %}
-                    {% include 'field.html' %}
-                {% endwith %}
-                {% with field=form.text %}
+                {% with field=form.link %}
                     {% include 'field.html' %}
                 {% endwith %}
                 {% with field=form.is_delete %}
