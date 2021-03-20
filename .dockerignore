@@ -16,6 +16,7 @@ docker-compose.yml
 .docker
 Dockerfile
 
+env.ini
 db.sqlite3
 
 celerybeat-schedule
