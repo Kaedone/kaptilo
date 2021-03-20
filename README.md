@@ -13,8 +13,11 @@ export API_KEY=...
 export ALLOWED_HOSTS=localhost
 export BASE_URL=https://localhost:8000
 ``` 
+- add to env `export DB_DSN=postgres://user:pass@localhost/db_name` if you use Postgres 
 - apply DB migrations `./manage.py migrate`
+- created **admin:admin** `./manage.py create_super_user`
 - run localserver `./manage.py runserver`
+- open [localhost/admin/super-sec/](http://localhost/admin/super-sec/) and login as **admin:admin**
 
 ## Server
 ```bash
