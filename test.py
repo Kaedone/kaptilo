@@ -1,4 +1,10 @@
 import ipinfo
-access_token = '0b7286b1c018e5'
+from django.conf import settings
+
+access_token = settings.ACCESS_TOKEN
 handler = ipinfo.getHandler(access_token)
-ip_adress = ''
+
+
+def get_ip(ip_address):
+    details = handler.getDetails(ip_address)
+    return details
