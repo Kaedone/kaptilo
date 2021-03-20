@@ -28,3 +28,7 @@ body {
     transition-property: opacity;
     transition-duration: 0.1s;
 }
+
+#username-link {
+    color: rgba(255, 255, 255, 0.55) !important;
+}

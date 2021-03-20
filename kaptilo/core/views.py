@@ -26,8 +26,8 @@ def create_link(request):
         if form.is_valid():
             link = form.save(commit=False)
             link.user = request.user
-            link.get_shortened_link(request)
             link.save()
+            link.get_shortened_link(request)
             messages.success(request, "Link was created successfully!")
             return redirect('homepage')
     context = {'form': form}
@@ -36,6 +36,8 @@ def create_link(request):
 
 def follow_link(request, pk: int):
     m = models.Link.objects.get(pk=pk)
+    if not m.permanent:
+        m.delete()
     return redirect(m.link)
 
 

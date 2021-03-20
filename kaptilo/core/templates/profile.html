@@ -12,6 +12,7 @@
                     <th>Link</th>
                     <th class="text-center">Is permanent?</th>
                     <th>Created</th>
+                    <th>Shortened</th>
                 </tr>
                 </thead>
                 {% for link in links %}
@@ -21,6 +22,7 @@
                             <i class="fi fi-rr-check text-success"></i>{% else %}
                             <i class="fi fi-rr-cross text-danger"></i>{% endif %}</td>
                         <td>{{ link.created|date:"d/m/y g:i a" }}</td>
+                        <td>{{ link.shortened }}</td>
                     </tr>
                 {% endfor %}
             </table>
