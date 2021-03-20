@@ -57,6 +57,8 @@ coverage.xml
 *.pot
 
 .env
+db.sqlite3
+data/
 
 # Django stuff:
 *.log

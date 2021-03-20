@@ -5,6 +5,7 @@ tmp/
 # Git
 .git
 .gitignore
+data/
 
 # CI
 .codeclimate.yml
