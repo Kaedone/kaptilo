@@ -9,7 +9,6 @@ from django.db import models
 class Link(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     link = models.URLField("Link", max_length=1024)
-    permanent = models.BooleanField("Is permanent", default=False)
     uses = models.IntegerField("Uses count", default=0)
     shortened = models.URLField("Shortened link", null=True, default=None)
     created = models.DateTimeField("Creation date", auto_now_add=True)

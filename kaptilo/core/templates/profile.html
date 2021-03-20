@@ -10,7 +10,6 @@
                 <thead>
                 <tr>
                     <th>Link</th>
-                    <th class="text-center">Is permanent?</th>
                     <th>Created</th>
                     <th>Shortened</th>
                     <th>Uses</th>
@@ -19,9 +18,6 @@
                 {% for link in links %}
                     <tr>
                         <td><a href="{{ link.link }}">{{ link.link|truncatechars:40 }}</a></td>
-                        <td class="text-center">{% if link.permanent %}
-                            <i class="fi fi-rr-check text-success"></i>{% else %}
-                            <i class="fi fi-rr-cross text-danger"></i>{% endif %}</td>
                         <td>{{ link.created|date:"d/m/y g:i a" }}</td>
                         <td>{{ link.shortened }}</td>
                         <td>{{ link.uses }}</td>

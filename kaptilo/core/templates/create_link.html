@@ -22,11 +22,6 @@
                     {% endwith %}
                     <small><a href="#" id="random-generate">Generate the link randomly</a></small>
                 </div>
-                <div class="form-check mb-3">
-                    {% with field=form.permanent %}
-                        {% include 'field.html' %}
-                    {% endwith %}
-                </div>
                 <button type="submit" class="btn btn-outline-dark">Create</button>
             </form>
         </div>
