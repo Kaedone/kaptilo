@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(Link)
 
-# Register your models here.
+@admin.register(Link)
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ["shortened", "uses", "user", "created"]
+    list_filter = ["created"]
+    search_fields = ["shortened", "link"]
