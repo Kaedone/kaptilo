@@ -7,6 +7,11 @@
             Error with creating!
         </div>
     {% endif %}
+    {% if done %}
+        <div class="container">
+            <div class="text-center">{{ url }}</div>
+        </div>
+    {% else %}
     <div class="container">
         <h2 class="display-4">Write your link</h2>
         <form method="post" class="my-5">
@@ -23,5 +28,6 @@
         <a class="btn btn-secondary" href="{% url 'homepage' %} " role="button">Close</a>
         </form>
     </div>
+    {% endif %}
 
 {% endblock %}
