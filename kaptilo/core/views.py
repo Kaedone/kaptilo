@@ -38,6 +38,9 @@ def follow_link(request, pk: int):
     m = models.Link.objects.get(pk=pk)
     if not m.permanent:
         m.delete()
+    else:
+        m.uses += 1
+        m.save()
     return redirect(m.link)
 
 
