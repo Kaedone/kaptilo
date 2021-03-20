@@ -12,6 +12,9 @@
         <form method="post" class="my-5">
             {% csrf_token %}
             <div class="mb-3">
+                {% with field=form.header %}
+                    {% include 'field.html' %}
+                {% endwith %}
                 {% with field=form.text %}
                     {% include 'field.html' %}
                 {% endwith %}
