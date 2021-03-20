@@ -6,7 +6,12 @@ pyenv virtualenv 3.9.0 kaptilo
 pyenv activate kaptilo
 pip install poetry
 poetry install
-cp .env.dev .env
+``` 
+- copy .env file `cp .env.dev .env` or export to envs:
+```bash
+export API_KEY=...
+export ALLOWED_HOSTS=localhost
+export BASE_URL=https://localhost:8000
 ``` 
 - apply DB migrations `./manage.py migrate`
 - run localserver `./manage.py runserver`
