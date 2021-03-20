@@ -8,7 +8,13 @@ services:
     depends_on:
       - pg
     ports:
-      - 80:8000
+      - 8000:8000
+    environment:
+      - DB_DSN=postgres://user:pass@pg/main
+      - API_KEY=${API_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${DOMAIN}
+      - BASE_URL=https://${DOMAIN}
 
   pg:
     image: postgres:12
