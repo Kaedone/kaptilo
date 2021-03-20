@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'icons/uicons/css/uicons-regular-rounded.css' %}">
 </head>
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
@@ -18,10 +19,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav me-auto mb-2 mb-lg-0">
                 <a class="nav-link active" href="/">Home</a>
                 <a class="nav-link" href="#">About</a>
             </div>
+            <form class="d-flex">
+                {% if not user.is_authenticated %}
+                    <a class="btn btn-outline-success" href="#" type="submit">Sign in</a>
+                {% else %}
+                    <div class="navbar-text">{{ user.username }}<a href="/logout" class="ms-2">> Logout</a></div>
+                {% endif %}
+            </form>
         </div>
     </div>
 </nav>
