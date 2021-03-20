@@ -8,10 +8,6 @@ from apps.core import forms
 from apps.core import models
 
 
-def homepage(request):
-    return render(request, 'homepage.html', {})
-
-
 def logout(request):
     auth.logout(request)
     return redirect('homepage')
