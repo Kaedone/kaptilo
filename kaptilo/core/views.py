@@ -39,8 +39,10 @@ def create_link(request):
         content = {'form': forms.LinkForm()}
     return render(request, 'create_link.html', content)
 
-def show_link(request, ):
-    ...
+
+def show_link(request, id):
+    m = models.Link.objects.get(pk=id)
+    return render(request, 'show_link.html', {'data': m})
 
 
 def login(request):

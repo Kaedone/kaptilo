@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 
 class LinkForm(forms.Form):
-    text = forms.CharField(label="Text in note", widget=forms.Textarea)
-    # url = forms.SlugField(label="Link name")
+    text = forms.CharField(label="Text in note", widget=forms.Textarea, required=False)
+    header = forms.CharField(label="Header", required=True)
     is_delete = forms.BooleanField(label='Delete after reading', required=False)
 
 
