@@ -21,7 +21,7 @@ export REDIS_DSN=redis://localhost:6379
 - apply DB migrations `./manage.py migrate`
 - created **admin:admin** `./manage.py create_super_user`
 - run localserver `./manage.py runserver`
-- open [localhost/admin/super-sec/](http://localhost/admin/super-sec/) and login as **admin:admin**
+- open [localhost:8000/admin/super-sec/](http://localhost:8000/admin/super-sec/) and login as **admin:admin**
 
 ## Server
 ```bash
