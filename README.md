@@ -7,9 +7,10 @@ pyenv activate kaptilo
 pip install poetry
 poetry install
 ``` 
+- to install pre-commit hooks execute it: `pre-commit install`
 - copy .env file `cp .env.dev .env` or export to envs:
 ```bash
-export API_KEY=...
+export CUTTLY_API_KEY=...
 export ALLOWED_HOSTS=localhost
 export BASE_URL=https://localhost:8000
 export RECAPTCHA_PUBLIC_KEY=...
@@ -20,11 +21,11 @@ export REDIS_DSN=redis://localhost:6379
 - apply DB migrations `./manage.py migrate`
 - created **admin:admin** `./manage.py create_super_user`
 - run localserver `./manage.py runserver`
-- open [localhost/admin/super-sec/](http://localhost/admin/super-sec/) and login as **admin:admin**
+- open [localhost:8000/admin/super-sec/](http://localhost:8000/admin/super-sec/) and login as **admin:admin**
 
 ## Server
 ```bash
-export API_KEY=...
+export CUTTLY_API_KEY=...
 export SECRET_KEY=...
 export DOMAIN=domain.com
 export RECAPTCHA_PUBLIC_KEY=...

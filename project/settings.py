@@ -16,7 +16,7 @@ env = environ.Env(
     DB_DSN=(str, "sqlite:///db.sqlite3"),
     REDIS_DSN=(str, "redis://localhost:6379"),
     BASE_URL=(str, "http://localhost:8000"),
-    API_KEY=(str, None),
+    CUTTLY_API_KEY=(str, None),
     ROLE=(str, "prod"),
     RECAPTCHA_PUBLIC_KEY=(str, None),
     RECAPTCHA_PRIVATE_KEY=(str, None),
@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ROLE = env("ROLE")
 
-API_KEY = env("API_KEY")
+CUTTLY_API_KEY = env("CUTTLY_API_KEY")
 
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
