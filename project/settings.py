@@ -33,6 +33,7 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 INSTALLED_APPS = [
+    "admin_honeypot",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
-    'apps.core.apps.CoreConfig',
+    'apps.common.apps.CommonConfig',
+    'apps.link.apps.LinkConfig',
 ]
 
 MIDDLEWARE = [

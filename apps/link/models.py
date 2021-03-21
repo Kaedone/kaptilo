@@ -16,7 +16,7 @@ class Link(models.Model):
     created = models.DateTimeField("Creation date", auto_now_add=True)
 
     class Meta:
-        app_label = "core"
+        app_label = "link"
         verbose_name = 'Link'
         verbose_name_plural = 'Links'
 
