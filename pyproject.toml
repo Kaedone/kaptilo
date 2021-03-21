@@ -16,6 +16,7 @@ django-widget-tweaks = "^1.4.8"
 sqlparse = "^0.4.1"
 chardet = "^4.0.0"
 django-admin-honeypot = "^1.1.0"
+django-captcha-admin = "^0.2"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.0"

@@ -16,6 +16,8 @@ env = environ.Env(
     BASE_URL=(str, "http://localhost:8000"),
     API_KEY=(str, None),
     ROLE=(str, "prod"),
+    RECAPTCHA_PUBLIC_KEY=(str, None),
+    RECAPTCHA_PRIVATE_KEY=(str, None),
 )
 
 ini_file_path = root(".env")
@@ -33,6 +35,8 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 INSTALLED_APPS = [
+    'captcha_admin',
+    'captcha',
     "admin_honeypot",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -110,6 +114,9 @@ STATICFILES_DIRS = [root("project/static")]
 BASE_URL = env("BASE_URL")
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
 
 if ROLE == "test":
 
