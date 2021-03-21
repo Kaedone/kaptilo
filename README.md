@@ -7,6 +7,7 @@ pyenv activate kaptilo
 pip install poetry
 poetry install
 ``` 
+- to install pre-commit hooks execute it: `pre-commit install`
 - copy .env file `cp .env.dev .env` or export to envs:
 ```bash
 export CUTTLY_API_KEY=...
