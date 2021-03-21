@@ -118,6 +118,19 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
 RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": True,
+    "root": {"level": "WARNING", "handlers": ["console"]},
+    "formatters": {"verbose": {"format": "%(levelname)s  %(asctime)s  %(module)s: %(message)s"}},
+    "handlers": {"console": {"level": "DEBUG", "class": "logging.StreamHandler", "formatter": "verbose"}},
+    "loggers": {
+        "django.server": {"level": "INFO", "handlers": ["console"], "propagate": False},
+        "django.request": {"level": "INFO", "handlers": ["console"], "propagate": False},
+        "django.db.backends": {"level": "ERROR", "handlers": ["console"], "propagate": False},
+    },
+}
+
 if ROLE == "test":
 
     class DisableMigrations(object):
