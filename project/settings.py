@@ -36,8 +36,6 @@ ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
-    'captcha_admin',
-    'captcha',
     "corsheaders",
     "admin_honeypot",
     'django.contrib.admin',
@@ -119,9 +117,6 @@ BASE_URL = env("BASE_URL")
 APPEND_SLASH = True
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-
-RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
-RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
 
 LOGGING = {
     "version": 1,

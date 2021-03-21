@@ -124,28 +124,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "django-captcha-admin"
-version = "0.2"
-description = "Provides a recaptcha field in django's default admin login page."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-django-recaptcha = "1.3.0"
-
-[[package]]
-name = "django-cors-headers"
-version = "3.7.0"
-description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-Django = ">=2.2"
-
-[[package]]
 name = "django-dynamic-fixture"
 version = "3.1.1"
 description = "A full library to create dynamic model instances for testing purposes."
@@ -171,17 +149,6 @@ description = "A Django utility application that returns client's real IP addres
 category = "main"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "django-recaptcha"
-version = "1.3.0"
-description = "Django recaptcha form field/widget app."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-django = "*"
 
 [[package]]
 name = "django-widget-tweaks"
@@ -342,7 +309,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "018e461a170e924a2b49587b3cc544eab298dd229467065fa0e1e3212f2bb83c"
+content-hash = "9b8bd709ab6a7ce9f29bc8f020e9a101695943c2e213ec8ded24752ba718be9a"
 
 [metadata.files]
 appdirs = [
@@ -389,13 +356,6 @@ django-admin-honeypot = [
     {file = "django-admin-honeypot-1.1.0.tar.gz", hash = "sha256:e18a52832b82740917737873c6f34117d15631565e9e4b7dbb9df48a29250796"},
     {file = "django_admin_honeypot-1.1.0-py2.py3-none-any.whl", hash = "sha256:88e72753f5cbda88d909292d9f3fe7741fb74a8afad083f96e86114238f9b364"},
 ]
-django-captcha-admin = [
-    {file = "django-captcha-admin-0.2.tar.gz", hash = "sha256:66a615db50e392fe7bc72f6727620b500a08a76d69f6c8c421d985ef35b0b263"},
-]
-django-cors-headers = [
-    {file = "django-cors-headers-3.7.0.tar.gz", hash = "sha256:96069c4aaacace786a34ee7894ff680780ec2644e4268b31181044410fecd12e"},
-    {file = "django_cors_headers-3.7.0-py3-none-any.whl", hash = "sha256:1ac2b1213de75a251e2ba04448da15f99bcfcbe164288ae6b5ff929dc49b372f"},
-]
 django-dynamic-fixture = [
     {file = "django-dynamic-fixture-3.1.1.tar.gz", hash = "sha256:90d9d68ec373dce97a4a9ba3ec6a39cf10918e9c222fdf231074cfb668d14ea2"},
 ]
@@ -405,10 +365,6 @@ django-environ = [
 ]
 django-ipware = [
     {file = "django-ipware-3.0.2.tar.gz", hash = "sha256:c7df8e1410a8e5d6b1fbae58728402ea59950f043c3582e033e866f0f0cf5e94"},
-]
-django-recaptcha = [
-    {file = "django-recaptcha-1.3.0.tar.gz", hash = "sha256:25e19b56f55101aaf145107e58e00f336d813886dc14de993c2d778f92ac22f9"},
-    {file = "django_recaptcha-1.3.0-py2.7.egg", hash = "sha256:29e62751a227a369140de291c9d021a817753ca1ef2c69b5a254cbc1374c80b7"},
 ]
 django-widget-tweaks = [
     {file = "django-widget-tweaks-1.4.8.tar.gz", hash = "sha256:9f91ca4217199b7671971d3c1f323a2bec71a0c27dec6260b3c006fa541bc489"},
