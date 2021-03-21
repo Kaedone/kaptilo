@@ -23,7 +23,7 @@ class Link(models.Model):
     def get_shortened_link(self, request):
         url = "http://" + request.get_host() + "/" + str(self.pk)
         url = urllib.parse.quote(url)
-        r = requests.get('http://cutt.ly/api/api.php?key={}&short={}'.format(settings.API_KEY, url))
+        r = requests.get('http://cutt.ly/api/api.php?key={}&short={}'.format(settings.CUTTLY_API_KEY, url))
         data = r.json()
         if data['url']['status'] == 7:
             self.shortened = data['url']['shortLink']

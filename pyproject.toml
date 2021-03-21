@@ -13,14 +13,11 @@ django-environ = "^0.4.5"
 dj-database-url = "^0.5.0"
 django-ipware = "^3.0.2"
 django-widget-tweaks = "^1.4.8"
-sqlparse = "^0.4.1"
-chardet = "^4.0.0"
 django-admin-honeypot = "^1.1.0"
 django-rest-framework = "^0.1.0"
 django-filter = "^2.4.0"
 djoser = "^2.1.0"
 django-dramatiq = "^0.10.0"
-pika = "^1.2.0"
 redis = "^3.5.3"
 
 [tool.poetry.dev-dependencies]
@@ -28,6 +25,7 @@ bandit = "^1.7.0"
 black = {version = "^19.10b0", allow-prereleases = true}
 isort = "^4.3"
 django-dynamic-fixture = "^3.1.1"
+pre-commit-hooks = "^3.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
