@@ -11,7 +11,7 @@ services:
       - 8000:8000
     environment:
       - DB_DSN=postgres://user:pass@pg/main
-      - API_KEY=${API_KEY}
+      - CUTTLY_API_KEY=${CUTTLY_API_KEY}
       - SECRET_KEY=${SECRET_KEY}
       - ALLOWED_HOSTS=${DOMAIN}
       - BASE_URL=https://${DOMAIN}
@@ -29,7 +29,7 @@ services:
     environment:
       - DB_DSN=postgres://user:pass@pg/main
       - REDIS_DSN=redis://redis:6379
-      - API_KEY=${API_KEY}
+      - CUTTLY_API_KEY=${CUTTLY_API_KEY}
       - SECRET_KEY=${SECRET_KEY}
       - BASE_URL=https://${DOMAIN}
 
