@@ -112,6 +112,7 @@ STATIC_ROOT = root("static")
 STATICFILES_DIRS = [root("project/static")]
 
 BASE_URL = env("BASE_URL")
+APPEND_SLASH = True
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
