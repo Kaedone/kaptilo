@@ -7,6 +7,7 @@ pyenv activate kaptilo
 pip install poetry
 poetry install
 ``` 
+- create reCaptcha's keys at [google.com/recaptcha](https://www.google.com/recaptcha/about/) for localhost
 - copy .env file `cp .env.dev .env` or export to envs:
 ```bash
 export API_KEY=...
@@ -22,6 +23,7 @@ export RECAPTCHA_PRIVATE_KEY=...
 - open [localhost/admin/super-sec/](http://localhost/admin/super-sec/) and login as **admin:admin**
 
 ## Server
+- create reCaptcha's keys at [google.com/recaptcha](https://www.google.com/recaptcha/about/) for **domain.com**
 ```bash
 export API_KEY=...
 export SECRET_KEY=...
