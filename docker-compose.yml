@@ -26,8 +26,6 @@ services:
       - redis:redis
     depends_on:
       - pg
-    ports:
-      - 8000:8000
     environment:
       - DB_DSN=postgres://user:pass@pg/main
       - REDIS_DSN=redis://redis:6379
