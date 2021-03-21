@@ -14,6 +14,7 @@ export ALLOWED_HOSTS=localhost
 export BASE_URL=https://localhost:8000
 export RECAPTCHA_PUBLIC_KEY=...
 export RECAPTCHA_PRIVATE_KEY=...
+export REDIS_DSN=redis://localhost:6379
 ``` 
 - add to env `export DB_DSN=postgres://user:pass@localhost/db_name` if you use Postgres 
 - apply DB migrations `./manage.py migrate`

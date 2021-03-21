@@ -19,6 +19,9 @@ django-admin-honeypot = "^1.1.0"
 django-rest-framework = "^0.1.0"
 django-filter = "^2.4.0"
 djoser = "^2.1.0"
+django-dramatiq = "^0.10.0"
+pika = "^1.2.0"
+redis = "^3.5.3"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.0"

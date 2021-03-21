@@ -2,6 +2,7 @@ import os
 
 import dj_database_url
 import environ
+import redis
 
 root = environ.Path(__file__, "../..")
 
@@ -13,6 +14,7 @@ env = environ.Env(
     SECRET_KEY=(str, "oiph!k9a+8p_&vpev0*sch^en7#ip&5v6gybt%=(8b+$-qbzs&"),
     ALLOWED_HOSTS=(list, ["*"]),
     DB_DSN=(str, "sqlite:///db.sqlite3"),
+    REDIS_DSN=(str, "redis://localhost:6379"),
     BASE_URL=(str, "http://localhost:8000"),
     API_KEY=(str, None),
     ROLE=(str, "prod"),
@@ -36,6 +38,7 @@ ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
+    "django_dramatiq",
     "corsheaders",
     "admin_honeypot",
     'django.contrib.admin',
@@ -148,6 +151,18 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "apps.api.authentications.CsrfExemptSessionAuthentication",
     ],
+}
+
+DRAMATIQ_BROKER = {
+    "BROKER": "dramatiq.brokers.redis.RedisBroker",
+    "OPTIONS": {"connection_pool": redis.ConnectionPool.from_url(env("REDIS_DSN"))},
+    "MIDDLEWARE": [
+        "dramatiq.middleware.AgeLimit",
+        "dramatiq.middleware.TimeLimit",
+        "dramatiq.middleware.Retries",
+        "django_dramatiq.middleware.AdminMiddleware",
+        "django_dramatiq.middleware.DbConnectionsMiddleware",
+    ]
 }
 
 if ROLE == "test":
