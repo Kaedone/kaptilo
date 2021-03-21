@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     "django_filters",
     "rest_framework",
+    "djoser",
     "rest_framework.authtoken",
     'apps.api.apps.ApiConfig',
     'apps.common.apps.CommonConfig',
