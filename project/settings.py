@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    "django_filters",
+    "rest_framework",
+    "rest_framework.authtoken",
+    'apps.api.apps.ApiConfig',
     'apps.common.apps.CommonConfig',
     'apps.link.apps.LinkConfig',
 ]
@@ -129,6 +133,20 @@ LOGGING = {
         "django.request": {"level": "INFO", "handlers": ["console"], "propagate": False},
         "django.db.backends": {"level": "ERROR", "handlers": ["console"], "propagate": False},
     },
+}
+
+REST_FRAMEWORK_EXTENSIONS = {"DEFAULT_CACHE_RESPONSE_TIMEOUT": 1}
+REST_FRAMEWORK = {
+    "PAGE_SIZE": 20,
+    "UPLOADED_FILES_USE_URL": env("ROLE") != "test",
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "TEST_REQUEST_DEFAULT_FORMAT": "json",
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "apps.api.authentications.CsrfExemptSessionAuthentication",
+    ],
 }
 
 if ROLE == "test":
